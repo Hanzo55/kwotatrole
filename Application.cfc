@@ -1,5 +1,10 @@
 component extends="org.corfield.framework" {
 	
+	variables.framework = {
+		home = "quote.default",
+		suppressImplicitService = false
+	}
+
 	function setupApplication() {
 		
 		// manage entire application with DI/1:
