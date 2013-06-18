@@ -1,18 +1,33 @@
 component {
 
-	public function init() {
+	public function init( any ratingService ) {
 
-		var quote = "";
+		local.quote = "";
+		local.ratingService = arguments.ratingService;
 
-		quote = new();
-		quote.setId("1");
-		quote.setText("He got exactly what he wanted: trashed.");
+		setRatingService(arguments.ratingService);
 
-		variables.quotes[quote.getId()] = quote;
+		local.quote = new();
+		local.quote.setId("1");
+		local.quote.setText("He got exactly what he wanted: trashed.");
+		local.quote.addRating(arguments.ratingService.get("1"));
+		local.quote.addRating(arguments.ratingService.get("2"));
+		local.quote.addRating(arguments.ratingService.get("3"));
+
+		variables.quotes[local.quote.getId()] = local.quote;	
 
 		variables.nextId = 2;
 
 		return this;
+	}
+
+	public void function setRatingService( any ratingService ) {
+		
+		variables.ratingService = arguments.ratingService;
+	}
+
+	public any function getRatingService() {
+		return variables.ratingService;
 	}
 
 	public function new() {
@@ -22,8 +37,8 @@ component {
 
 	public function get( string id ) {
 
-		if ( Len( arguments.id ) && StructKeyExists( variables.quotes, id ) )
-			return variables.quotes[arguments.id];
+		if ( Len( arguments.id ) && StructKeyExists( variables.quotes, arguments.id ) )
+			return variables.quotes[ arguments.id ];
 		else
 			return new();
 	}
@@ -35,20 +50,22 @@ component {
 
 	public function save( any quote ) {
 
-		var newId = 0;
+		local.newId = 0;
 
 		if ( Len( arguments.quote.getId() ) ) {
-			variables.quotes[arguments.quote.getId()] = arguments.quote;
+			variables.quotes[ arguments.quote.getId() ] = arguments.quote;
 		} else {
 
 			 lock type="exclusive" name="setNextId" timeout="10" throwontimeout="false" {
-				newId = variables.nextId; 
+				local.newId = variables.nextId; 
 				variables.nextId = variables.nextId + 1; 
 			}
 		
-			arguments.quote.setId( newId );
+			arguments.quote.setId( local.newId );
 
-			variables.quotes[newId] = arguments.quote;
+			variables.quotes[ local.newId ] = arguments.quote;
 		}
 	}
+
+
 }

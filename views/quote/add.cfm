@@ -1,6 +1,5 @@
 <cfsilent>
 	<cfset local.quote = rc.quote />
-
 </cfsilent>
 
 <cfoutput><form method="post" action="index.cfm?action=quote.save">

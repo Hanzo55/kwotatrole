@@ -2,7 +2,8 @@ component extends="org.corfield.framework" {
 	
 	variables.framework = {
 		home = "quote.default",
-		suppressImplicitService = false
+		suppressImplicitService = false	// this means fw1 will automatically call service.XX() between controller.startXX() and controller.endXX()
+
 	}
 
 	function setupApplication() {

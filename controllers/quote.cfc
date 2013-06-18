@@ -2,18 +2,24 @@ component accessors="true" {
 	
 	property framework;
 	property quoteService;
-	
+	property userService;
+
 	public void function startDefault( rc ) {
 		
 		rc.quote = variables.quoteService.get( argumentCollection=rc );
 
 		rc.quotes = variables.quoteService.list();
-	
+
+		rc.user = variables.userService.get( 1 );
+
 	}
 
 	public void function endDefault( rc ) {
 		
+		rc.nav = variables.framework.view( "common/nav" );
 		rc.content = variables.framework.view( "quote/add" );
+
+		rc.navContent = rc.nav & rc.content;
 
 	}	
 
