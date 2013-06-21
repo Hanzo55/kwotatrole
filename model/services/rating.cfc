@@ -34,7 +34,7 @@ component {
 		return this;
 	}
 
-	public function get( string id ) {
+	public any function get( string id ) {
 
 		if ( Len( arguments.id ) AND StructKeyExists( variables.ratings, arguments.id ) ) {
 			return variables.ratings[ arguments.id ];		
@@ -44,10 +44,29 @@ component {
 
 	}
 
-	public function list() {
+	public struct function list() {
 
 		return variables.ratings;
 	}
+
+	public void function save( any rating ) {
+
+		local.newId = 0;
+
+		if ( Len( arguments.rating.getId() ) ) {
+			variables.ratings[ arguments.rating.getId() ] = arguments.rating;
+		} else {
+
+			 lock type="exclusive" name="setNextId" timeout="10" throwontimeout="false" {
+				local.newId = variables.nextId; 
+				variables.nextId = variables.nextId + 1; 
+			}
+		
+			arguments.rating.setId( local.newId );
+
+			variables.ratings[ local.newId ] = arguments.rating;
+		}
+	}	
 
 	public struct function listByUser( any user ) {
 
@@ -55,7 +74,7 @@ component {
 		local.userList = StructNew();
 
 		 for (listItem in local.list) {
-		 	if ( listItem.getUserId() EQ arguments.user.getUserId() ) {
+		 	if ( listItem.getUserId() EQ arguments.user.getId() ) {
 		 		StructAppend( local.userList, listItem );
 		 	}
 		}
@@ -63,7 +82,7 @@ component {
 		return local.userList;
 	}
 
-	public function new() {
+	public any function new() {
 
 		return CreateObject( 'component', 'model.Rating' ).init();
 	}

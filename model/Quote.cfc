@@ -40,8 +40,10 @@ component {
 	public boolean function hasUserRated( any user ) {
 
 		for (i in variables.ratings) {
+
 			if (i.getUserId() EQ arguments.user.getId() )
 				return true;
+
 		}
 
 		return false;

@@ -35,6 +35,17 @@ component accessors="true" {
 	public void function endSave( rc ) {
 
 		variables.framework.redirect( 'quote.default' );
+	}
 
+	public void function startJudge( rc ) {
+
+		// get the user about to judge a quote
+		rc.user = variables.userService.get( 1 );
+		rc.quote = variables.quoteService.get( argumentCollection=rc );
+	}
+
+	public void function endJudge( rc ) {
+
+		variables.framework.redirect( 'quote.default' );
 	}
 }

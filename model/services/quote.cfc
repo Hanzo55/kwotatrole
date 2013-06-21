@@ -5,16 +5,16 @@ component {
 		local.quote = "";
 		local.ratingService = arguments.ratingService;
 
-		setRatingService(arguments.ratingService);
+		setRatingService( arguments.ratingService );
 
 		local.quote = new();
-		local.quote.setId("1");
-		local.quote.setText("He got exactly what he wanted: trashed.");
-		local.quote.addRating(arguments.ratingService.get("1"));
-		local.quote.addRating(arguments.ratingService.get("2"));
-		local.quote.addRating(arguments.ratingService.get("3"));
+		local.quote.setId( "1" );
+		local.quote.setText( "He got exactly what he wanted: trashed." );
+		local.quote.addRating( arguments.ratingService.get("1") );
+		local.quote.addRating( arguments.ratingService.get("2") );
+		local.quote.addRating( arguments.ratingService.get("3") );
 
-		variables.quotes[local.quote.getId()] = local.quote;	
+		variables.quotes[ local.quote.getId() ] = local.quote;	
 
 		variables.nextId = 2;
 
@@ -67,5 +67,28 @@ component {
 		}
 	}
 
+	public function judge( any user, any quote, string verdict ) {
 
+		// get a new rating object.
+		local.service = getRatingService();
+
+		local.rating = local.service.get();
+
+		local.rating.setUserId( arguments.user.getId() );
+
+		if ( arguments.verdict IS 'c' ) {
+			local.rating.setIsCitizen(true);
+		} else {
+			local.rating.setIsTroll(true);
+		}
+
+		// commit rating to non-volatile (gives it a key in the db)
+		local.service.save( local.rating );
+
+		// attach to quote
+		arguments.quote.addRating( local.rating );
+
+		// commit quote to non-volatile
+		save( arguments.quote );
+	}
 }
