@@ -1,0 +1,1 @@
+window.Kwotatrole = Ember.Application.create();
