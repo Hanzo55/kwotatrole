@@ -1,9 +1,9 @@
 Kwotatrole.Router.map(function() {
-	this.resource('main', { path: '/' });
+	this.resource('quotes', { path: '/' });
 });
 
 Kwotatrole.QuotesRoute = Ember.Route.extend({
 	model: function() {
-		return Kwotatrole.Quotes.find();
+		return Kwotatrole.Quote.find();
 	}
 });
