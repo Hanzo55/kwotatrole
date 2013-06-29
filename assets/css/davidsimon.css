@@ -1,0 +1,69 @@
+@import url(http://fonts.googleapis.com/css?family=Special+Elite);
+
+html,
+body {
+	font-family: 'Special Elite';
+	color: #ffffff;
+	background: #000000;
+	line-height: 1.4em;
+	width: 1024px;
+	margin: 0 auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+#app {
+	background: #000000;
+	margin: 130px 0 40px 0;
+	/*border: 1px solid #ffffff;*/
+	position: relative;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
+				0 25px 50px 0 rgba(0, 0, 0, 0.15);
+}
+
+#app h1 {
+	position: absolute;
+	background: #000000;
+	top: -120px;
+	width: 100%;
+	font-size: 70px;
+	font-weight: bold;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.3);
+	text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	-ms-text-rendering: optimizeLegibility;
+	-o-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+}
+
+#quote-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#quote-list li {
+	padding: 12px 12px 0 0;
+	position: relative;
+	font-size: 24px;
+}
+
+#quote-list li li {
+	list-style-type: none;
+	padding-left: 620px;
+	list-style-position: inside;
+}
+
+#quote-list li li:before {
+    display: inline-block;
+    content: "-";
+    width: 1em;
+    margin-left: -1em;
+}

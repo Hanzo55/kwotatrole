@@ -12,8 +12,13 @@
 				<li>
 					<input type="radio" name="rating" value="c" class="citizen">
 					<input type="radio" name="rating" value="t" class="troll">
-					<label>"{{text}}"</label> <button class="destroy"></button>
-					<span id="quote-info">{{author}}, {{inflection}} <a href="{{sourceUrl}}" target="_blank"><em>{{sourceTitle}}</em></a></span>
+					<label>"{{text}}"</label>
+					<ul>
+            <li><span id="quote-info">{{author}}</span></li>
+          </ul>
+          <span id="content-title">
+            <a href="{{sourceUrl}}" target="_blank">{{sourceTitle}}</a>
+          </span>
 				</li>
 				{{/each}}
 			</ul>

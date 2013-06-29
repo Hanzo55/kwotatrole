@@ -261,6 +261,12 @@ label[for='toggle-all'] {
 	font-family: Arial;
 }
 
+#quote-list li #content-title {
+	font-size: 12px;
+	margin-left: 70px;
+	font-family: Arial;
+}
+
 #quote-list li .destroy {
 	display: none;
 	position: absolute;
