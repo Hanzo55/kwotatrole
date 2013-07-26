@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <title>#rc.title#</title>
-  <link rel="stylesheet" href="/assets/css/davidsimon.css" />
+  <link rel="stylesheet" href="/assets/css/sictastic.css" />
 </head>
 <body>
-  <cfoutput>#body#
+  <cfoutput><div id="container">#body#
 
-<cfloop array="#rc.libs#" index="lib">
+<!--- <cfloop array="#rc.libs#" index="lib">
 	<script src="#lib#"></script>	
 </cfloop>
 
 <cfloop array="#rc.emberFiles#" index="appFile">
 	<script src="#appFile#"></script>	
-</cfloop>
+</cfloop> --->
    
-</cfoutput>   
+</cfoutput></div>
 </body>
 </html>
