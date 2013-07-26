@@ -8,8 +8,7 @@ component {
 		local.user = new();
 		local.user.setId("1");
 		local.user.setUsername("Hanzo");
-		local.user.setHeaven(0);
-		local.user.setHell(0);
+		local.user.setHerdPercentage(25);
 
 		variables.users[ local.user.getId() ] = local.user;
 
