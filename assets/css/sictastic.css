@@ -59,7 +59,7 @@ body {
 }
 
 .black-sheep {
-    background: url("http://www.wowlemmings.com/images/black-sheep.gif") no-repeat top left transparent;
+    background: url('/assets/img/black-sheep.gif') no-repeat top left transparent;
     display: block;
     float: left;
     height: 24px;
@@ -67,7 +67,7 @@ body {
 }
 
 .white-sheep {
-    background: url("http://www.wowlemmings.com/images/white-sheep.gif") no-repeat top left transparent;
+    background: url('/assets/img/white-sheep.gif') no-repeat top left transparent;
     display: block;
     float: left;
     height: 24px;
