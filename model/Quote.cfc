@@ -67,39 +67,17 @@ component {
 
 	}
 
-/*
-	public void function setRatingId( numeric id ) {
+	public string function getRatingsByUser( numeric user_id ) {
 
-		variables.ratingId = arguments.id;
+		for (i in variables.ratings) {
+
+			if (i.getUserId() EQ arguments.user_id) {
+
+				return (i.getIsCitizen() ? "<strong>[C]</strong>[T]" : "[C]<strong>[T]</strong>");
+			}
+
+		}
+
+		return "error";
 	}
-
-	public numeric function getRatingId() {
-
-		return variables.ratingId;
-	}	
-
-	public void function setRating( any rating ) {
-
-		variables.rating = arguments.rating;
-	}
-
-	public any function getRating() {
-
-		return variables.rating;
-	}
-
-	// GETTERS (calculated)
-
-	public string function getRatings() {
-
-		return "{" & variables.rating.getCitizen() & "} [" & variables.rating.getTroll() & "]";
-	}
-
-	public boolean function hasUserRated() {
-
-		return false;
-
-	}
-	*/
-
 }
