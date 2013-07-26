@@ -16,11 +16,8 @@ component accessors="true" {
 
 	public void function endDefault( rc ) {
 		
-		rc.nav = variables.framework.view( "common/nav" );
-		rc.content = variables.framework.view( "quote/add" );
-
-		rc.navContent = rc.nav & rc.content;
-
+		rc.header = variables.framework.view( "common/nav" );
+		rc.content = variables.framework.view( "quote/add" ) & variables.framework.view( "quote/list" );
 	}	
 
 	public void function startSave( rc ) {
