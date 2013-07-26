@@ -3,8 +3,7 @@ component {
 
 	variables.id = "";
 	variables.username = "";
-	variables.heaven = 0;
-	variables.hell = 0;
+	variables.herdPercent = 0;
 
 	public function init() {
 
@@ -31,24 +30,14 @@ component {
 		return variables.username;
 	}
 
-	public void function setHeaven( numeric heaven ) {
+	public void function setHerdPercentage( numeric percent ) {
 
-		variables.heaven = arguments.heaven
+		variables.herdPercent = arguments.percent;
 	}
 
-	public numeric function getHeaven() {
-	
-		return variables.heaven;
-	}	
+	public numeric function getHerdPercentage() {
 
-	public void function setHell( numeric hell ) {
-
-		variables.hell = arguments.hell
-	}
-
-	public numeric function getHell() {
-	
-		return variables.hell;
+		return variables.herdPercent;
 	}
 
 }
