@@ -8,13 +8,13 @@
 <body>
   <cfoutput><div id="container">#body#
 
-<!--- <cfloop array="#rc.libs#" index="lib">
+<cfloop array="#rc.libs#" index="lib">
 	<script src="#lib#"></script>	
 </cfloop>
 
 <cfloop array="#rc.emberFiles#" index="appFile">
 	<script src="#appFile#"></script>	
-</cfloop> --->
+</cfloop>
    
 </cfoutput></div>
 </body>
