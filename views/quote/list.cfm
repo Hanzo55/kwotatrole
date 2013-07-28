@@ -5,7 +5,7 @@
 <cfoutput>
 <hr>
 <cfloop collection="#local.quoteList#" item="local.id">
-	<cfset local.quote = local.quoteList[local.id] />
+	<cfset local.quote = local.quoteList[ local.id ] />
 
 	"#local.quote.getText()#" | 
 
@@ -17,5 +17,8 @@
 	</cfif>
 
 	<br/>
+
+	- #local.quote.getAuthor()#, "<a href="#local.quote.getSourceUrl()#">#local.quote.getSourceTitle()#</a>"<br/>
+	[<a href="#local.quote.getSiteUrl()#">#local.quote.getSiteName()#</a>]
 </cfloop>
 </cfoutput>

@@ -1,18 +1,27 @@
 component {
 
-	public function init( any ratingService ) {
+	public function init( any ratingService, any siteService ) {
 
 		local.quote = "";
 		local.ratingService = arguments.ratingService;
+		local.siteService = arguments.siteService;
 
 		setRatingService( arguments.ratingService );
+		setSiteService( arguments.siteService );
 
 		local.quote = new();
-		local.quote.setId( "1" );
-		local.quote.setText( "He got exactly what he wanted: trashed." );
+		local.quote.setId( 1 );
+		local.quote.setText( 'It''s like World of Warcraft...in 1985.' );
+		local.quote.setSourceUrl( 'http://www.codinghorror.com/blog/2012/12/the-organism-will-do-what-it-damn-well-pleases.html' );
+		local.quote.setSourceTitle( 'The Organism Will Do Whatever It Damn Well Pleases' );
+		local.quote.setAuthor( 'Jeff Atwood' );
+
+		local.quote.setSiteName( arguments.siteService.get(1).getName() );
+		local.quote.setSiteUrl( arguments.siteService.get(1).getUrl() );
+		
 		local.quote.addRating( arguments.ratingService.get("1") );
 		local.quote.addRating( arguments.ratingService.get("2") );
-		local.quote.addRating( arguments.ratingService.get("3") );
+		local.quote.addRating( arguments.ratingService.get("3") );	
 
 		variables.quotes[ local.quote.getId() ] = local.quote;	
 
@@ -21,6 +30,7 @@ component {
 		return this;
 	}
 
+	//dependencies
 	public void function setRatingService( any ratingService ) {
 		
 		variables.ratingService = arguments.ratingService;
@@ -30,9 +40,19 @@ component {
 		return variables.ratingService;
 	}
 
+	public void function setSiteService( any siteService ) {
+		
+		variables.siteService = arguments.siteService;
+	}
+
+	public any function getSiteService() {
+		return variables.siteService;
+	}	
+
+	//methods
 	public function new() {
 
-		return createObject('component','model.quote').init();
+		return createObject('component','model.Quote').init();
 	}
 
 	public function get( string id ) {
